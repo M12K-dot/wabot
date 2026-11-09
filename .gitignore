@@ -50,5 +50,11 @@ whatsapp-contacts.md
 **/messages.db
 **/*.db
 
+# === Bridge Go : session WhatsApp, binaires, sauvegardes (JAMAIS committer) ===
+whatsapp-bridge/store/
+whatsapp-bridge/*.exe
+whatsapp-bridge/*.bak*
+**/*.exe
+
 # === Export de session WhatsApp (contient les identifiants — JAMAIS committer) ===
 **/railway-session.txt

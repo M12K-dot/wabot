@@ -115,7 +115,38 @@ def build_history(con, jids, limit):
     return messages
 
 
+def groq_reply(system, messages, model, max_tokens=200):
+    key = ns.groq_api_key()
+    if not key:
+        return None
+    payload = {
+        "model": model or ns.groq_model(),
+        "messages": [{"role": "system", "content": system}] + messages,
+        "temperature": 0.95,
+        "max_tokens": max_tokens,
+        "stream": False,
+    }
+    data = json.dumps(payload).encode("utf-8")
+    req = urllib.request.Request(
+        ns.groq_url() + "/chat/completions",
+        data=data,
+        headers={"content-type": "application/json",
+                 "authorization": "Bearer " + key},
+        method="POST",
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=120) as resp:
+            out = json.loads(resp.read().decode("utf-8"))
+        return (out.get("choices", [{}])[0].get("message", {}).get("content") or "").strip() or None
+    except Exception as e:
+        print("  [groq] erreur:", e)
+        return None
+
+
 def ollama_reply(system, messages, model, max_tokens=200):
+    # Si GROQ_API_KEY est defini, on utilise Groq (cloud) au lieu d'Ollama (local).
+    if ns.groq_api_key():
+        return groq_reply(system, messages, ns.groq_model(), max_tokens)
     payload = {
         "model": model,
         "messages": [{"role": "system", "content": system}] + messages,

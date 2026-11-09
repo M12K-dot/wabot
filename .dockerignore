@@ -1,0 +1,28 @@
+# Secrets / etat runtime — ne jamais embarquer dans l'image
+**/.env
+**/.env.*
+!**/.env.example
+**/store/
+**/*.db
+**/session/
+**/sessions/
+**/auth/
+**/creds.json
+**/persona_chats.json
+**/stats.json
+**/event_offset.txt
+
+# Dependances / build
+**/node_modules/
+**/__pycache__/
+**/*.pyc
+*.exe
+whatsapp-bridge/*.bak*
+
+# Divers
+.git/
+*.log
+whatsapp-contacts.csv
+whatsapp-contacts.md
+claude-phone/
+connectors/

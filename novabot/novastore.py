@@ -54,6 +54,23 @@ def bridge_url():
     return (env_get("BRIDGE_URL", "http://localhost:8080") or "").rstrip("/")
 
 
+# ---------------- fournisseur Groq (API compatible OpenAI) ----------------
+GROQ_BASE_DEFAULT = "https://api.groq.com/openai/v1"
+GROQ_MODEL_DEFAULT = "llama-3.3-70b-versatile"
+
+
+def groq_api_key():
+    return env_get("GROQ_API_KEY")
+
+
+def groq_url():
+    return (env_get("GROQ_URL", GROQ_BASE_DEFAULT) or "").rstrip("/")
+
+
+def groq_model():
+    return env_get("GROQ_MODEL", GROQ_MODEL_DEFAULT)
+
+
 # ---------------- ecriture atomique ----------------
 def _atomic_write(path, text):
     path = Path(path)
