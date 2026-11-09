@@ -29,7 +29,7 @@ BRIDGE_PID=$!
 # 2) Cerveau Python. Lance depuis novabot/ pour resoudre les fichiers locaux.
 cd /app/novabot
 echo "[start] lancement du cerveau Python (brain.py)"
-python brain.py &
+python3 brain.py &
 BRAIN_PID=$!
 
 # Si n'importe quel process se termine, on fait tomber le conteneur avec son code.

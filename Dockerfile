@@ -18,7 +18,8 @@ RUN go mod download
 
 # Puis le code et build du binaire statique-libc.
 COPY whatsapp-bridge/main.go ./
-RUN go build -trimpath -ldflags="-s -w" -o /out/whatsapp-bridge .
+RUN mkdir -p /out && go build -trimpath -ldflags="-s -w" -o /out/whatsapp-bridge . \
+    && test -f /out/whatsapp-bridge
 
 ############################
 # Stage 2 — runtime Python + bridge
