@@ -43,3 +43,9 @@ Thumbs.db
 # === Données personnelles exportées ===
 whatsapp-contacts.csv
 whatsapp-contacts.md
+
+# === État runtime des bots (contient des numéros/données perso) ===
+**/persona_chats.json
+**/stats.json
+**/messages.db
+**/*.db
