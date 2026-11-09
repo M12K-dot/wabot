@@ -1,0 +1,13 @@
+{
+  "filters": {
+    "237600000000@s.whatsapp.net": []
+  },
+  "reminders": [],
+  "toggles": {
+    "237600000000@s.whatsapp.net": {
+      "filters": true
+    }
+  },
+  "welcome": {},
+  "goodbye": {}
+}

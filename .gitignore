@@ -1,0 +1,45 @@
+# === Secrets — NE JAMAIS committer ===
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+credentials.json
+secrets.json
+
+# === WhatsApp / bots : sessions d'authentification ===
+# (contiennent vos identifiants de session — doivent rester locaux)
+**/auth/
+**/session/
+**/sessions/
+**/baileys_store*
+**/*_session/
+**/store.json
+**/creds.json
+
+# === Dépendances ===
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+venv/
+env/
+
+# === Build / sortie ===
+dist/
+build/
+.next/
+out/
+.vercel/
+
+# === Logs & temporaires ===
+*.log
+npm-debug.log*
+event_offset.txt
+*.tmp
+.DS_Store
+Thumbs.db
+
+# === Données personnelles exportées ===
+whatsapp-contacts.csv
+whatsapp-contacts.md
