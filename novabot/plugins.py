@@ -549,19 +549,11 @@ def _heure(ctx):
 
 
 # ======================= Groupe =======================
-def _bridge_base(ctx):
-    try:
-        b = (ctx.settings.get("bridge_url") or "").rstrip("/")
-    except Exception:
-        b = ""
-    return b or "http://localhost:8080"
-
-
 @command("tagall", desc="Mentionne tous les membres (groupe)", category="Groupe", aliases=("all",))
 def _tagall(ctx):
     if not ctx.is_group:
         return "commande de groupe uniquement"
-    base = _bridge_base(ctx)
+    base = _bridge_base()
     try:
         data = _http_json(base + "/api/group?jid=" + _enc(ctx.chat_jid), timeout=15)
     except Exception as e:

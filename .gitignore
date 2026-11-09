@@ -49,3 +49,6 @@ whatsapp-contacts.md
 **/stats.json
 **/messages.db
 **/*.db
+
+# === Export de session WhatsApp (contient les identifiants — JAMAIS committer) ===
+**/railway-session.txt

@@ -20,7 +20,9 @@ const logger = pino({ level: 'silent' });
 let reconnectTimer = null;
 
 async function startSock() {
-  const { state, saveCreds } = await useMultiFileAuthState(path.join(__dirname, '..', config.sessionDir));
+  const sessionPath = path.join(__dirname, '..', config.sessionDir);
+  require('./session-transfer').restoreSessionFromEnv(sessionPath);
+  const { state, saveCreds } = await useMultiFileAuthState(sessionPath);
   const { version } = await fetchLatestBaileysVersion();
   const plugins = loadPlugins();
 
