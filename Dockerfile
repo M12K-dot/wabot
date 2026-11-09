@@ -58,7 +58,7 @@ ENV BRIDGE_URL=http://localhost:8080 \
 
 EXPOSE 8080
 
-# Le volume persiste la session (store/whatsapp.db) et les messages (store/messages.db).
-VOLUME ["/app/store"]
+# Note: le volume /app/store est monte cote Railway (pas d'instruction VOLUME ici,
+# non supportee par Railway).
 
 ENTRYPOINT ["/app/start.sh"]
